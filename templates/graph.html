@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scatter Plot</title>
+
+    <link href="{{ url_for('static', filename='Searchbar.css') }}" rel="stylesheet" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #1B2631;
+            text-align: center;
+            font-family: arial, sans-serif; 
+            font-size: 32px; 
+            margin: 20px 70px; 
+            font-weight: 100;
+        }
+
+        #geneIdInput {
+        padding: 5px;
+        font-size: 15px;
+        margin-right: 10px; 
+        border-radius: 5px;
+        }
+
+        #scatterPlot {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Scatter Plot</h1>
+    <div id="container">
+        <div id="searchContainer">
+            <input type="text" id="geneIdInput" placeholder="Enter GeneID">
+            <button id="searchButton">Search</button>
+        </div>
+        <div id="scatterPlot"></div>
+    </div>
+
+    
+    <script>
+        // Load the scatter plot data from the server
+        $.getJSON('/get_global_expression_specificity_data', function(data) {
+            var scatterPlotData = {
+                x: data.Q95,
+                y: data.IQR,
+                mode: 'markers',
+                type: 'scatter',
+                marker: {
+                    size: 10,
+                    color: data.Recount2_SEP_TPM_0_1,
+                    colorscale: 'Jet',
+                    cmin: 0,
+                    cmax: 1,
+                    opacity: 0.05
+                },
+                text: data.GeneID.map(String), // Convert GeneID values to strings
+                hovertemplate: 'GeneID: %{text}<br>Q95: %{x}<br>IQR: %{y}<extra></extra>'
+            };
+
+            var layout = {
+                // title: 'Scatter Plot',
+                xaxis: {
+                    title: 'Median(Q95) Expression Level'
+                },
+                yaxis: {
+                    title: 'Expression Variability'
+                }
+            };
+
+            Plotly.newPlot('scatterPlot', [scatterPlotData], layout);
+        });
+
+        // Highlight the data point corresponding to the entered GeneID
+        $('#searchButton').click(function() {
+            var geneId = $('#geneIdInput').val();
+            var scatterPlot = document.getElementById('scatterPlot');
+            var data = scatterPlot.data[0];
+
+            var index = data.text.indexOf(geneId);
+            if (index !== -1) {
+                var update = { 'marker.color': 'black', 'marker.opacity': 2 };
+                Plotly.restyle('scatterPlot', update, [index]);
+            }
+        });
+
+        // Handle search when Enter key is pressed
+        $('#geneIdInput').keypress(function(event) {
+            if (event.which === 13) { // 13 is the key code for Enter key
+                $('#searchButton').click(); // Trigger the search button click event
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#searchContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* #geneIdInput {
+    padding: 5px;
+    font-size: 15px;
+    margin-right: 10px; 
+    border-radius: 5px;
+} */
+
+#searchButton {
+    padding: 5px 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: arial;
+    color: floralwhite; 
+    background-color: #7FB3D5;
+    border: none;
+    border-radius: 5px; 
+    margin: auto; /*don't change*/ 
+    overflow: hidden;
+    outline: none;  /*might not need it*/
+    transition: ease-out 0.4s; 
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color:#709CB9;
+}

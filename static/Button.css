@@ -1,0 +1,35 @@
+button{
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: arial;
+  color: floralwhite; 
+  background-color: #7FB3D5;
+  border: none;
+  border-radius: 5px;  /*20*/
+  padding: 15px 0;
+  margin: auto; /*don't change*/ 
+  left: 0;
+  right: 0; 
+  width: 200px;
+  overflow: hidden;
+  position: absolute;
+  display: flex;   /*no underline*/
+  justify-content: center;
+  outline: none;  /*might not need it*/
+  transition: ease-out 0.4s; 
+  
+  box-shadow:inset 0 0 0 0 #CB8147;
+
+  }
+
+      
+button:hover {
+
+  background-color:#709CB9;
+
+      }
+
+
