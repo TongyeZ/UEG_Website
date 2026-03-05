@@ -1,23 +1,86 @@
 <html>
 <head>
-    <title>My Link Page</title>
-    <!-- <link href="/static/Graph.css" rel="stylesheet"> -->
+    <title>Resources</title>
+    <link href="{{ url_for('static', filename='NavigationBar.css') }}" rel="stylesheet" type="text/css">
     <style>
-        h1{
-        color: #1B2631;
-        text-align: center;
-        font-family: arial, sans-serif; 
-        font-size: 32px; 
-        margin: 20px 60px; 
-        font-weight: 100
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #1B2631;
         }
 
-        #figure2{
-            width:1000px;
-            height:470px;
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin: 22px 24px 10px 24px;
+            font-weight: 300;
         }
 
+        .subtitle {
+            text-align: center;
+            margin: 0 24px 24px 24px;
+            color: #3f5875;
+        }
 
+        .section {
+            max-width: 1180px;
+            margin: 0 auto 20px auto;
+            padding: 0 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            border: 1px solid #d7dde5;
+            border-radius: 10px;
+            padding: 14px;
+            background: #fafbfd;
+        }
+
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: #2c4a70;
+        }
+
+        .card p {
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+
+        .card a {
+            color: #2d6aa8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .figure-card {
+            border: 1px solid #e0e6ee;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+
+        .figure-card h4 {
+            margin: 0 0 8px 0;
+        }
+
+        .figure-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #e6ebf2;
+        }
     </style>
 </head>
 
@@ -26,18 +89,74 @@
     {% include "navbar.html" %}
     
     <main>
-        <h1>Graphs</h1>
+        <h1>Resources</h1>
+        <p class="subtitle">Paper, datasets, and key visual assets in one place.</p>
 
-        <img id="figure2" src='../static/image/UEGFigure2.png' alt="loading..." title="Figure2"/>
-        <img src='../static/image/UEGFigure3A.svg' alt="loading..." title="Figure3.A"/>
-        <img src='../static/image/UEGFigure3BC.svg' alt="loading..." title="Figure3.B.C"/>
-        <img src='../static/image/UEGFigure4.svg' alt="loading..." title="Figure4"/>
-        <img src='../static/image/UEGFigure5A.svg' alt="loading..." title="Figure5.A"/>
-        <img src='../static/image/UEGFigure5B.svg' alt="loading..." title="Figure5.B"/>
-        <img src='../static/image/UEGFigure5D.svg' alt="loading..." title="Figure5.D"/>
-        <img src='../static/image/UEGFigure6A.svg' alt="loading..." title="Figure6.A"/>
-        <img src='../static/image/UEGFigure6B.svg' alt="loading..." title="Figure6.B"/>
-        <img src='../static/image/UEGFigure7B.svg' alt="loading..." title="Figure7.B"/>
+        <section class="section">
+            <div class="cards">
+                <article class="card">
+                    <h3>Paper</h3>
+                    <p>Comprehensive analysis of ubiquitously expressed genes in human, from a data-driven perspective.</p>
+                    <a href="https://doi.org/10.1016/j.gpb.2021.08.017" target="_blank" rel="noopener noreferrer">Open DOI</a>
+                </article>
+                <article class="card">
+                    <h3>Interactive Plot</h3>
+                    <p>Explore Q95, IQR, and Variance with search and transcriptome-group highlighting.</p>
+                    <a href="/graph">Open Visualize Tab</a>
+                </article>
+                <article class="card">
+                    <h3>Dataset Columns</h3>
+                    <p>Includes GeneID, Q50/Q95, Variance, IQR, Recount2 SEP, Cluster, and Category.</p>
+                    <a href="/methods">See Methods & Data Notes</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Figure Gallery</h2>
+            <div class="figure-grid">
+                <article class="figure-card">
+                    <h4>Figure 2</h4>
+                    <img src='../static/image/UEGFigure2.png' alt="Figure 2" title="Figure2"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 3A</h4>
+                    <img src='../static/image/UEGFigure3A.svg' alt="Figure 3A" title="Figure3.A"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 3BC</h4>
+                    <img src='../static/image/UEGFigure3BC.svg' alt="Figure 3BC" title="Figure3.B.C"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 4</h4>
+                    <img src='../static/image/UEGFigure4.svg' alt="Figure 4" title="Figure4"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 5A</h4>
+                    <img src='../static/image/UEGFigure5A.svg' alt="Figure 5A" title="Figure5.A"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 5B</h4>
+                    <img src='../static/image/UEGFigure5B.svg' alt="Figure 5B" title="Figure5.B"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 5D</h4>
+                    <img src='../static/image/UEGFigure5D.svg' alt="Figure 5D" title="Figure5.D"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 6A</h4>
+                    <img src='../static/image/UEGFigure6A.svg' alt="Figure 6A" title="Figure6.A"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 6B</h4>
+                    <img src='../static/image/UEGFigure6B.svg' alt="Figure 6B" title="Figure6.B"/>
+                </article>
+                <article class="figure-card">
+                    <h4>Figure 7B</h4>
+                    <img src='../static/image/UEGFigure7B.svg' alt="Figure 7B" title="Figure7.B"/>
+                </article>
+            </div>
+        </section>
 
     </main>
     

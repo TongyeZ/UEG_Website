@@ -19,6 +19,10 @@ def graph():
 def resources():
     return render_template('resources.html')
 
+@app.route('/methods')
+def methods():
+    return render_template('methods.html')
+
 @app.route('/get_global_expression_specificity_data')
 def get_global_expression_specificity_data():
     scatter_plot_data = {
@@ -27,7 +31,8 @@ def get_global_expression_specificity_data():
         'Variance': ueg_data['Variance'].tolist(),
         'IQR': ueg_data['IQR'].tolist(),
         'Recount2_SEP_TPM_0_1': ueg_data['Recount2_SEP_TPM_0_1'].tolist(),
-        'GeneID': ueg_data['GeneID'].tolist()
+        'GeneID': ueg_data['GeneID'].tolist(),
+        'Category': ueg_data['Category'].tolist()
     }
     return jsonify(scatter_plot_data)
 

@@ -32,6 +32,44 @@
         margin: 10px 60px; 
         font-weight: 100;
       }
+
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto 24px auto;
+        padding: 0 20px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        border: 1px solid #d8dfe8;
+        border-radius: 10px;
+        background: #f9fbfd;
+        padding: 14px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px 0;
+        color: #24486f;
+        font-family: Arial, sans-serif;
+      }
+
+      .card p {
+        margin: 0;
+      }
+
+      .sectionTitle {
+        margin: 28px 60px 10px 60px;
+        font-size: 26px;
+        color: #1B2631;
+        font-family: Arial, sans-serif;
+        font-weight: 300;
+      }
       
     </style>
     
@@ -39,17 +77,7 @@
   
   
   <body>    
-
-    <nav id="navbar">
-      <div class="logo">
-        <p></p> 
-      </div>
-      <ul>
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/graph">Visualize</a></li>
-        <li><a href="/">About</a></li>
-      </ul>
-    </nav>
+    {% include "navbar.html" %}
 
 
     <main> 
@@ -65,6 +93,36 @@
       <a class="ueg" href="/graph">
         <button> GRAPH </button>
       </a>
+
+      <h2 class="sectionTitle">Key Findings</h2>
+      <div class="wrap">
+        <div class="cards">
+          <article class="card">
+            <h3>UEG Prevalence</h3>
+            <p>About 12,234 genes (49.01%) were reported as expressed in at least 80% of human transcriptomes.</p>
+          </article>
+          <article class="card">
+            <h3>Transcriptome Size</h3>
+            <p>The median human transcriptome size was reported as 16,342 genes (65.44%).</p>
+          </article>
+          <article class="card">
+            <h3>Stable Reference Set</h3>
+            <p>A LoVarUEG set was identified with stable expression and proposed as internal reference genes.</p>
+          </article>
+          <article class="card">
+            <h3>Cross-dataset Validation</h3>
+            <p>Validation against an independent dataset (Dee2) showed agreement with the main observations.</p>
+          </article>
+          <article class="card">
+            <h3>Category Lens</h3>
+            <p>UEGs, SEGs, and MEGs can be used as broad transcriptome groups for visual interpretation.</p>
+          </article>
+          <article class="card">
+            <h3>Practical Use</h3>
+            <p>The framework supports exploratory analysis, candidate filtering, and assay/reference-gene planning.</p>
+          </article>
+        </div>
+      </div>
     </main> 
     
   </body>

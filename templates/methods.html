@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Methods & Data Notes</title>
+    <link href="{{ url_for('static', filename='NavigationBar.css') }}" rel="stylesheet" type="text/css">
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; color: #1B2631; }
+        h1 { text-align: center; font-weight: 300; margin: 22px 16px; }
+        .wrap { max-width: 1100px; margin: 0 auto 24px auto; padding: 0 20px; }
+        .section {
+            border: 1px solid #d9e1ea;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 14px;
+            background: #fbfdff;
+        }
+        h2 { margin: 0 0 8px 0; color: #2c4a70; }
+        ul { margin: 8px 0 0 18px; line-height: 1.5; }
+        code { background: #eef3f9; padding: 1px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <h1>Methods & Data Notes</h1>
+    <div class="wrap">
+        <section class="section">
+            <h2>Workflow (High Level)</h2>
+            <ul>
+                <li>Aggregate diverse human transcriptomes into a global expression matrix.</li>
+                <li>Measure expression prevalence and variability across transcriptomes.</li>
+                <li>Use global metrics (e.g., Q95, IQR, Variance, SEP) to classify and compare genes.</li>
+                <li>Group genes into broad transcriptome classes (UEGs, SEGs, MEGs) for interpretation.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Columns Used in This Website</h2>
+            <ul>
+                <li><code>GeneID</code>: Gene identifier.</li>
+                <li><code>Q95</code>, <code>IQR</code>, <code>Variance</code>: Plotted in 3D on the Visualize page.</li>
+                <li><code>Recount2_SEP_TPM_0_1</code>: Used to assign point color when highlighted.</li>
+                <li><code>Category</code>: Drives transcriptome group dropdown highlighting.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Interpretation Tips</h2>
+            <ul>
+                <li>Start with a transcriptome group to identify broad expression-pattern clusters.</li>
+                <li>Use gene search to isolate one candidate and inspect its global pattern.</li>
+                <li>Compare highlighted genes against neighboring points to assess uniqueness.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
